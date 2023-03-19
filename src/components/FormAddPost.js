@@ -17,9 +17,11 @@ export default function FormAddPost() {
   };
 
   const handleAddPost = () => {
-    postsService.add(newPost, () => {
-      history.push("/posts");
-    });
+    if (newPost.title.length >= 2 && newPost.text.length) {
+      postsService.add(newPost, () => {
+        history.push("/posts");
+      });
+    }
   };
 
   const handleResetForm = () => {
@@ -39,6 +41,8 @@ export default function FormAddPost() {
             onChange={(e) => {
               setNewPost({ ...newPost, title: e.target.value });
             }}
+            minLength="2"
+            required
           />
           <br />
           <br />
@@ -50,6 +54,8 @@ export default function FormAddPost() {
               setNewPost({ ...newPost, text: e.target.value });
             }}
             className="textArea"
+            maxLength="300"
+            required
           />
         </div>
         <button onClick={handleAddPost}>Submit</button>
