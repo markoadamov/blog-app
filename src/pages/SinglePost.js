@@ -18,9 +18,8 @@ export default function SinglePost() {
   };
 
   return (
-    <div className="postCardsHolder">
-      <p>TestSinglePost</p>
-      <title>{post.title}</title>
+    <div className="defaultDivPadding">
+      <h1>{post.title} -ID: {post.id}</h1>
       <p>{post.text}</p>
     </div>
   )

@@ -12,6 +12,11 @@ class PostsService {
   async get(id) {
     return await this.axios.get(`/posts/${id}`);
   }
+
+  async add(newPost, redirect) {
+    await this.axios.post("/posts", newPost);
+    redirect();
+  }
 }
 
 const postsService = new PostsService();
