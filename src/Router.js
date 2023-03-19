@@ -20,6 +20,9 @@ export default function Router() {
           <Route path="/add">
             <AddPost />
           </Route>
+          <Route path="/edit/:id">
+            <AddPost />
+          </Route>
         </Switch>
     </div>
   );

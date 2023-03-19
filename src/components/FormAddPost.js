@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import postsService from "../services/PostsService";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams, useLocation } from "react-router-dom";
 
 export default function FormAddPost() {
   const formDefaultState = {
@@ -8,20 +8,38 @@ export default function FormAddPost() {
     text: "",
   };
 
+  const location = useLocation();
+  const { id } = useParams();
   const [newPost, setNewPost] = useState(formDefaultState);
 
   let history = useHistory();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    if (id) {
+      handleGetPost();
+    } else {
+      setNewPost(formDefaultState);
+    }
+  }, [location]);
+
+  const handleGetPost = async () => {
+    const response = await postsService.get(id);
+    setNewPost(response.data);
   };
 
-  const handleAddPost = () => {
-    if (newPost.title.length >= 2 && newPost.text.length) {
-      postsService.add(newPost, () => {
-        history.push("/posts");
-      });
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    id ? handleEditPost() : handleAddPost();
+  };
+
+  const handleAddPost = async () => {
+    await postsService.add(newPost);
+    history.push("/posts");
+  };
+
+  const handleEditPost = async () => {
+    await postsService.edit(id, newPost);
+    history.push("/posts");
   };
 
   const handleResetForm = () => {
@@ -58,8 +76,10 @@ export default function FormAddPost() {
             required
           />
         </div>
-        <button onClick={handleAddPost}>Submit</button>
-        <button onClick={handleResetForm}>Reset</button>
+        <button type="submit">Submit</button>
+        <button type="button" onClick={handleResetForm}>
+          Reset
+        </button>
       </form>
     </div>
   );
