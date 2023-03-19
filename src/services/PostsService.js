@@ -8,6 +8,10 @@ class PostsService {
   async getAll() {
     return await this.axios.get("/posts");
   }
+
+  async get(id) {
+    return await this.axios.get(`/posts/${id}`);
+  }
 }
 
 const postsService = new PostsService();

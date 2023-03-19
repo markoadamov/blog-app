@@ -5,6 +5,8 @@ import postsService from "../services/PostsService";
 export default function AppPosts() {
   const [posts, setPosts] = useState([]);
 
+  //const [posts, setPosts] = useState([{id:1, title: "1Neki Naslov", text: "1Neki Tekst Neki Tekst Neki Tekst Neki Tekst Neki Tekst Neki Tekst Neki Tekst Neki Tekst "}, {id:2, title: "2Neki Naslov", text: "2Neki Tekst Neki Tekst Neki Tekst Neki Tekst Neki Tekst Neki Tekst Neki Tekst Neki Tekst "}]);
+
   useEffect(() => {
     handleGetPosts();
   }, []);

@@ -8,8 +8,8 @@ export default function PostCardDetails({ post }) {
           <h3 className="mb-0">{post.title}</h3>
           <div className="mb-1 text-muted">{post.createdAt}</div>
           <p className="card-text mb-auto">{post.text}</p>
-          <a href="#" className="stretched-link">
-            Continue reading
+          <a href={`/post/${post.id}`} className="stretched-link">
+            View Post
           </a>
         </div>
       </div>
