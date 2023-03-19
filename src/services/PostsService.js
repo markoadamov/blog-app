@@ -20,6 +20,10 @@ class PostsService {
   async edit(id, post) {
     await this.axios.put(`/posts/${id}`, post);
   }
+
+  async delete(id) {
+    return await this.axios.delete(`/posts/${id}`);
+  }
 }
 
 const postsService = new PostsService();

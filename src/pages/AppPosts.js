@@ -18,7 +18,7 @@ export default function AppPosts() {
 
   return (
     <div>
-      <PostsList posts={posts} />
+      <PostsList posts={posts} setPosts={setPosts}/>
     </div>
   );
 }

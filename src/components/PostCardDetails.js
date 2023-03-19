@@ -1,8 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-export default function PostCardDetails({ post }) {
-
+export default function PostCardDetails({ post, handleDeletePost }) {
   let history = useHistory();
 
   return (
@@ -13,10 +12,13 @@ export default function PostCardDetails({ post }) {
           <div className="mb-1 text-muted">{post.createdAt}</div>
           <p className="card-text mb-auto">{post.text}</p>
           <div className="ViewAndEdit">
-          <a href={`/post/${post.id}`}>
-            View Post
-          </a>
-          <button onClick={() => history.push(`/edit/${post.id}`)}>Edit</button>
+            <a href={`/post/${post.id}`}>View Post</a>
+            <div>
+              <button onClick={() => history.push(`/edit/${post.id}`)}>
+                Edit
+              </button>
+              <button onClick={() => handleDeletePost(post.id)}>Delete</button>
+            </div>
           </div>
         </div>
       </div>
