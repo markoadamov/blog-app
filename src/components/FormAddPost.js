@@ -3,12 +3,12 @@ import postsService from "../services/PostsService";
 import { useHistory } from "react-router-dom";
 
 export default function FormAddPost() {
-  const defaultState = { //defaultState sam dodao jer mi pise u konzoli neko upozorenje da nema default vrednost
+  const formDefaultState = {
     title: "",
     text: "",
   };
 
-  const [newPost, setNewPost] = useState(defaultState);
+  const [newPost, setNewPost] = useState(formDefaultState);
 
   let history = useHistory();
 
@@ -20,6 +20,10 @@ export default function FormAddPost() {
     postsService.add(newPost, () => {
       history.push("/posts");
     });
+  };
+
+  const handleResetForm = () => {
+    setNewPost(formDefaultState);
   };
 
   return (
@@ -49,6 +53,7 @@ export default function FormAddPost() {
           />
         </div>
         <button onClick={handleAddPost}>Submit</button>
+        <button onClick={handleResetForm}>Reset</button>
       </form>
     </div>
   );
