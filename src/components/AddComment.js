@@ -27,7 +27,9 @@ export default function AddComment({ postID, comments, setComments }) {
     <div>
       <form onSubmit={handleSubmit}>
         <div>
-          <h1>Add Comment:</h1>
+          <br />
+          <br />
+          <h3>Add Comment:</h3>
           <br />
           <textarea
             placeholder="Comment Body"

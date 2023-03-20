@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import { useHistory } from "react-router-dom";
-import postsService from "../services/PostsService";
 
 export default function PostCardDetails({ post, handleDeletePost }) {
   let history = useHistory();
