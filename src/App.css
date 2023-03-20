@@ -7,6 +7,19 @@ body{
   color: rgb(255, 255, 255) !important;
 }
 
+.CommentDiv{
+  border-style: ridge;
+}
+
+.AllCommentsDiv{
+  border-style: ridge;
+}
+
+.AddCommentTextArea{
+  width: 35rem;
+  height: 10rem;
+}
+
 .postCardsHolder{
   padding: 3rem;
 }

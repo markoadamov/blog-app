@@ -6,11 +6,11 @@ class PostsService {
   }
 
   async getAll() {
-    return await this.axios.get("/posts");
+    return await this.axios.get(`/posts?filter={"include":["comments"]}`);
   }
 
   async get(id) {
-    return await this.axios.get(`/posts/${id}`);
+    return await this.axios.get(`/posts/${id}?filter={"include":["comments"]}`);
   }
 
   async add(newPost) {
@@ -23,6 +23,12 @@ class PostsService {
 
   async delete(id) {
     return await this.axios.delete(`/posts/${id}`);
+  }
+
+  async addComment(comment, postId){
+    const response = await this.axios.post(`/posts/${postId}/comments`, comment);
+    //console.log("response:",response);
+    return response
   }
 }
 

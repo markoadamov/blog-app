@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { useHistory } from "react-router-dom";
+import postsService from "../services/PostsService";
 
 export default function PostCardDetails({ post, handleDeletePost }) {
   let history = useHistory();
-
+  
   return (
     <div className="col-md-6">
       <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -20,6 +21,7 @@ export default function PostCardDetails({ post, handleDeletePost }) {
               <button onClick={() => handleDeletePost(post.id)}>Delete</button>
             </div>
           </div>
+          <div>Number of Comments: {post.comments.length}</div>
         </div>
       </div>
     </div>
